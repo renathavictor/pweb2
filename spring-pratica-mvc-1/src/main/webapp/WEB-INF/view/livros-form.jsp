@@ -9,11 +9,11 @@
 </head>
 <body>
 	<h1>Cadastro de Livros</h1>
-
+	<br/><br/>
 	<form:form action="save" method="POST" modelAttribute="livro" acceptCharset="UTF-8">
 		Id: <form:input path="id" /><br/><br/>
-		Título: <form:input path="titulo" />
-		Autor: <form:input path="autor" />
+		Título: <form:input path="titulo" /><br/><br/>
+		Autor: <form:input path="autor" /><br/><br/>
 		Estilo: <form:select path="estilo">
 			<form:options items="${estiloOptions}" />
 		</form:select><br/><br/>
