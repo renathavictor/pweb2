@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Teste</title>
+</head>
+<body>
+
+  <div style="margin: auto; width: 50%;">
+    <h1>Teste de API</h1>
+    <form action="" style="display: flex; flex-flow:column;">
+        <label for="fatura">Fatura</label>
+        <input type="text" id="fatura" placeholder="Id Fatura"/>
+        
+        <label for="token">Token</label>
+        <textarea type="text" id="token" placeholder="Token"></textarea>
+
+        <button style="width: 30%" type="submit" id="botao">Buscar</button>
+      </form>
+  </div>
+
+  <script>
+
+    const token = document.querySelector('#token')
+    const fatura = document.querySelector('#fatura')
+    const botao = document.querySelector('#botao')
+
+    
+    botao.addEventListener('click', (event) => {
+      event.preventDefault()
+      
+      const auth = 'Bearer ' + token.value
+      let uri = "https://api.thetvdb.com/series/";
+
+      let h = new Headers();
+      h.append('Accept', '*/*')
+      /* h.append('Access-Control-Allow-Origin', '*')
+      h.append('Access-Control-Allow-Methods', 'GET, POST, PUT')
+      h.append('Access-Control-Allow-Headers', 'Content-Type') */
+      h.append('Content-Type', 'application/json')
+      h.append('Authorization', auth)
+
+      let req = new Request(uri+fatura.value, {
+        method: 'GET',
+        header: h,
+        credentials: 'include'
+      })
+      console.log(req)
+      fetch(req, {mode: 'no-cors'})
+        .then(res => {
+          if (res.ok) {
+            console.log('ok')
+            return res.json()
+          } else {
+            throw new Error('Error http')
+          }
+        })
+        .then(data => {
+          return JSON.stringify(data, null, 4)
+        })
+        .catch(err => {
+          console.log('erro: ', err.message)
+        })
+    })
+
+/* 
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzAzODEyNjksImlkIjoiU2VyaWVzTGluZSIsIm9yaWdfaWF0IjoxNTcwMjk0ODY5LCJ1c2VyaWQiOjUzOTkwNCwidXNlcm5hbWUiOiJyZW5hdGhhX252aWN0b3J3ODQifQ.hbsgh4Wmpxqp4pMtUtfWEpCR3R2Hctm66362-WHkw5db3KarMtVL1nMsbMbPmv4x2hsPRlvNTzhQmMHAvHYPdWeU37E3OrKs0-Wumvetcb3Q_iyUOVULSo2688XYBUG9gkWW6WSR0NQo3hV9G7u3-qFl9Sun2zsEN2BILGI3Lv_1Jct0WHOjXJQd7bgXbXfszVv8aIry5tcPF1_84deoq10htS0kn_kxPOcyraxRi77mc8NJ2FphjsEpeUgUIm3AvvyHvQ3KmUts4ib3Sdd3UHjxSRkUB71oAiWnEWV84tYRYtshGkXfqc-xjPkOPsMHn9D7DTwcLVDySxIPVZZW2Q
+
+ */
+
+  </script>
+</body>
+</html>
