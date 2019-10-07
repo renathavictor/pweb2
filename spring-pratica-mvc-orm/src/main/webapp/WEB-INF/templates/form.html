@@ -9,7 +9,7 @@
 	<form action="#" th:action="@{cadastreAluno}" th:object="${aluno}" method="post">
 		Nome: <input type="text" th:field="*{nome}" /><br/>
 		Matrícula: <input type="text" th:field="*{matricula}" /><br/>
-		Curso: <select>
+		Curso: <select id="curso" name="curso">
 			<option 
 				th:each="i : ${cursoOptions}"
 				th:text="${i.key}"
