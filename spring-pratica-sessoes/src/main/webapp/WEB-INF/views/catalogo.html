@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Catálogo de Livros</title>
+</head>
+<body>
+
+	<h1 align="center">Livros de Java</h1>
+	
+	<div align="center">
+	[<a th:href="@{/carrinho}">Ver carrinho</a>]
+	</div>
+	
+	<div th:each="item : ${itens}">
+		<hr>
+		<form th:action="@{/carrinho}" method="post">
+			<input type="hidden" name="id" th:value="${item.id}">
+			<h2>
+				<i><span th:text="${item.descricaoCurta}"></span></i>
+				(R$<span th:text="${item.preco}"></span>)
+			</h2>
+			<span th:text="${item.descricaoLonga}"></span>
+			<div align="center">
+				<input type="submit" value="adicionar ao carrinho">
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>
