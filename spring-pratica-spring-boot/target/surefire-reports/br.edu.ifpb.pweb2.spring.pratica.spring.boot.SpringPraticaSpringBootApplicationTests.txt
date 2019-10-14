@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: br.edu.ifpb.pweb2.spring.pratica.spring.boot.SpringPraticaSpringBootApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.86 s - in br.edu.ifpb.pweb2.spring.pratica.spring.boot.SpringPraticaSpringBootApplicationTests
