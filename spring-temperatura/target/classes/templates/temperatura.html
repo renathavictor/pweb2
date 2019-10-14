@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Conversor de Temperaturas</title>
+<link rel="stylesheet" th:href="@{style.css}" />
+</head>
+<body>
+
+<h1>Conversor de Temperaturas</h1>
+
+<form th:action="@{temperatura}" method="post">
+	Temperatura em °C: 
+	<input type="text" name="celsius" /> 
+	<input type="submit" value="para F="/>
+	<input type="text" name="paraF" /></br>
+
+	Temperatura em °F: <input type="text" name="farenheit" /> 
+	<input type="submit" value="para C=" />
+	<input type="text" name="paraC" />
+</form>
+
+
+
+</body>
+</html>
