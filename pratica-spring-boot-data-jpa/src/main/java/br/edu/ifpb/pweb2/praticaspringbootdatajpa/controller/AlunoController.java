@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.ifpb.pweb2.praticaspringbootdatajpa.entity.Aluno;
-import br.edu.ifpb.pweb2.praticaspringbootdatajpa.entity.Turma;
 import br.edu.ifpb.pweb2.praticaspringbootdatajpa.repository.AlunoRepository;
 
 @Controller
@@ -22,7 +21,7 @@ public class AlunoController {
 	@RequestMapping
 	private ModelAndView list() {
 		ModelAndView model = new ModelAndView("aluno/alunos");
-		List<Aluno> alunos = repository.f
+		List<Aluno> alunos = repository.findAll();
 		model.addObject("alunos", alunos);
 		return model;
 	}
