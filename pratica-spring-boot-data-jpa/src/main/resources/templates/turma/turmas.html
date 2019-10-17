@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<title>Listagem de turmas</title>
+<link rel="stylesheet" th:href="@{style.css}" />
+</head>
+<body>
+
+	<h1>Turmas cadastradas</h1>
+	<hr>
+	<div class="container">
+		<a th:href="@{turmas/form}" class="btn btn-primary">Nova</a>
+		<div style="height: 50px">	
+			<form class="form-inline" th:action="@{/turmas}">
+				<input type="text" name="disciplina" class="form-control" placeholder="Nome da disciplina"> </br>
+				<button type="submit" class="btn btn-primary">Filtrar</button>
+			</form>		
+		</div>
+		<table class="tabel table-hover table-stripped">
+			<tr>
+				<th>Descricao</th>
+				<th>Professor</th>
+				<th>Disciplina</th>
+			</tr>
+			<tr th:each="turma : ${turmas}">
+				<td th:text="${turma.descricao}"></td>
+				<td th:text="${turma.professor}"></td>
+				<td th:text="${turma.disciplina}"></td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>
