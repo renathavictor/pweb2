@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:messages errorStyle="color:red" showDetail="true" />
+<h:form>
+	Login: <h:inputText id="login" value="#{loginBean.login}" required="true" >
+		<f:validateLength  maximum="10" minimum="0" />
+	</h:inputText><br/>
+	Senha: <h:inputSecret id="senha" value="#{loginBean.senha}" /><br/>
+	<h:commandButton value="Logar" action="#{loginBean.autentique}" />
+</h:form>
+</html>
