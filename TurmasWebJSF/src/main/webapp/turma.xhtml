@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Turma</title>
+	<h:outputStylesheet library="bootstrap" name="css/bootstrap.min.css" />
+</h:head>
+<h:body>
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+
+				<a class="navbar-brand" href="http://localhost:8080/TurmasWebJSF/">Home</a>
+			</div>
+		</div>
+	</div>
+	
+	<div class="jumbotron">
+		<h1>Turmas</h1>
+		<p>Cadastro de turma e alunos</p>
+	</div>
+
+	<div class="container">
+
+		<div class="main-page">
+
+			<div class="panel panel-primary">
+				<div class="panel-heading">Matricular novo aluno</div>
+				<div class="panel-body">
+					<h:form>
+						<h2>
+							<h:outputText value="#{turmaBean.turma.nome}" />
+						</h2>
+						<label for="nome" class="col-sm-2 control-label">Nome:</label>
+						<div class="col-sm-10">
+							<h:inputText value="#{turmaBean.nomeAluno}" styleClass="form-control"
+								pt:placeholder="Nome do aluno" />
+						</div>
+
+						<label for="nome" class="col-sm-2 control-label">Matrícula:</label>
+						<div class="col-sm-10">
+							<h:inputText value="#{turmaBean.matriculaAluno}" styleClass="form-control"
+								pt:placeholder="Matrícula do aluno"/>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<h:commandButton value="Matricular" styleClass="btn btn-default"
+									actionListener="#{turmaBean.matricularAluno}" />
+							</div>
+						</div>
+					</h:form>
+				</div>
+			</div>
+			<h:form> 
+			<h:dataTable var="aluno"
+				value="#{turmaBean.turma.alunos}"
+				styleClass="table table-striped table-hover" cellspacing="1"
+				cellpadding="3" width="50%"
+				columnClasses="tabTurmasCol1,tabTurmasCol2">
+				<f:facet name="header">
+					<h:outputText value="Alunos matriculados" />
+				</f:facet>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Matricula" />
+					</f:facet>
+					<h:outputText value="#{aluno.matricula}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nome" />
+					</f:facet>
+					<h:outputText value="#{aluno.nome}" />
+				</h:column>
+
+			</h:dataTable> </h:form>
+		</div>
+
+	</div>
+</h:body>
+</html>
